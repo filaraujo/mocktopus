@@ -1,0 +1,17 @@
+{
+  "name": "mocktopus",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Filipe Araujo <filipe.alves.araujo@gmail.com>",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^2.1.0"
+  },
+  "devDependencies": {
+    "should": "^4.4.2"
+  }
+}

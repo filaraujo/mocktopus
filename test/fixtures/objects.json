@@ -1,0 +1,18 @@
+{
+  "objectSimple": {
+    "foo": true,
+    "bar": false,
+    "baz": 1
+  },
+  "objectNested": {
+    "foo": {
+      "bar": {
+        "boo": true
+      },
+      "baz": {
+        "far": false,
+        "faz": 1
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "numberSimple": "66",
+  "numberWithDecimal": "723.12312313",
+  "numberWithRange": "1...1000",
+  "numbersWithLetters": "1000s"
+}

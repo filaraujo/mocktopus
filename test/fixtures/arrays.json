@@ -1,0 +1,16 @@
+{
+  "arraySingle": {
+    "#": "1",
+    "property": true
+  },
+
+  "arrayMultiple": {
+    "#": "3",
+    "property": true
+  },
+
+  "arrayWithRange": {
+    "#": "1...5",
+    "property": true
+  }
+}
