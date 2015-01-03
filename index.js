@@ -3,12 +3,25 @@ var api = {};
 /**
  *
  */
-function randomNumber(min, max) {
+function randomNumber(token) {
+  var tokens = token.split(/\.{3}|\:/).map(Number);
+  var min = tokens[0];
+  var max = tokens[1];
+  var precision = tokens[2];
+  var rand;
+
+
   if (!max) {
     return min;
   }
 
-  var rand = (Math.random() * (max - min)) + min;
+  rand = (Math.random() * (max - min)) + min;
+
+  if (precision) {
+    precision = rand.toString().indexOf('.') + precision;
+    return Number(rand.toPrecision(precision));
+  }
+
   return Math.round(rand);
 }
 
@@ -16,12 +29,12 @@ function randomNumber(min, max) {
  *
  */
 function arrayify(tmpl) {
-  var numbers = tmpl['#'].split('...').map(Number);
+  // var numbers = tmpl['#'].split('...').map(Number);
   // clone obj
   var obj = JSON.parse(JSON.stringify(tmpl));
   delete obj['#'];
 
-  numbers = randomNumber.apply(this, numbers);
+  var numbers = randomNumber(tmpl['#']);
 
   return Array.apply(null, {length: numbers})
     .map(parse.bind(this, obj));
@@ -33,12 +46,11 @@ function arrayify(tmpl) {
 function parseToken(token){
   var tokens;
 
-  if (token.indexOf('...') >= 0){
-    tokens = token.split('...').map(Number);
-    return randomNumber.apply(this, tokens);
+  if (token.indexOf('...') >= 0) {
+    return randomNumber(token);
   }
 
-  if (/\d+(?:\.|)\d{1,}/.test(token)){
+  if (/\d+(?:\.|)\d{1,}/.test(token)) {
     return Number(token);
   }
 
