@@ -1,3 +1,4 @@
+var chance = require('chance').Chance(Math.random);
 var api = {};
 
 /**
@@ -32,12 +33,12 @@ function arrayify(tmpl) {
   // clone obj
   var obj = JSON.parse(JSON.stringify(tmpl));
   var array = Array.apply(null, {
-    length: randomNumber(obj['~length'])
+    length: randomNumber(obj['@length'])
   });
 
-  delete obj['~length'];
+  delete obj['@length'];
 
-  console.log(obj, Object.keys(obj))
+  // console.log(obj, Object.keys(obj))
 
   if (Object.keys(obj).length) {
     return array.map(parse.bind(this, obj));
@@ -46,17 +47,61 @@ function arrayify(tmpl) {
   return array;
 }
 
+
+function paramify(token) {
+  'use strict';
+
+  if (!token) {
+    return {};
+  }
+
+  var params = token.split(',').map(function(t) {
+    t = t.split(':');
+    var key = t[0];
+    var val = t[1];
+
+    this[key] = val;
+
+    // if should be number, convert it
+    if (/\d{0,}(?:\.|)\d{1,}/.test(val)) {
+      this[key] =  Number(val);
+    }
+
+    // if should be boolea, convert it
+    if (/^(false|true)$/.test(val)) {
+      this[key] = eval(val);
+    }
+
+    return this;
+  }, {})[0];
+
+  return params;
+}
+
 /**
  *
  */
 function parseToken(token) {
   var tokens;
 
+  // console.log(token)
+
+  if (/^\#/.test(token)) {
+    tokens = token.split(/\?/);
+    console.log(tokens)
+
+    var directive = tokens[0].split('#')[1];
+    var params = paramify(tokens[1]);
+
+
+    return chance[directive].call(chance, params);
+  }
+
   if (token.indexOf('...') >= 0) {
     return randomNumber(token);
   }
 
-  if (/\d+(?:\.|)\d{1,}/.test(token)) {
+  if (/\d{0,}(?:\.|)\d{1,}/.test(token)) {
     return Number(token);
   }
 
@@ -75,13 +120,13 @@ function parse(tmpl) {
   }
 
   // if length directive, convert to array
-  if (tmpl.hasOwnProperty('~length')) {
+  if (tmpl.hasOwnProperty('@length')) {
     return arrayify(tmpl);
   }
 
   // if value directive, return value instead of an {}
-  if (tmpl.hasOwnProperty('~value')) {
-    return parseToken(tmpl['~value']);
+  if (tmpl.hasOwnProperty('@value')) {
+    return parseToken(tmpl['@value']);
   }
 
   Object.keys(tmpl).forEach(function(key) {

@@ -37,11 +37,11 @@ describe('#mock:arrays', function() {
 
     it('should include any properties within the object', function() {
       mockData.arraySingleObject.forEach(function(array) {
-        array.should.containEql({'property': true});
+        array.should.containEql({'someProperty': true});
       });
 
       mockData.arrayManyObjects.forEach(function(array) {
-        array.should.containEql({'property': true});
+        array.should.containEql({'someProperty': true});
       });
     });
 
@@ -50,14 +50,14 @@ describe('#mock:arrays', function() {
     });
 
 
-    it('should allow for array ranges', function(){
-
-
-      var x = mocktopus.mock('{ "~length": "4", "~value": "#name{middle:true,prefix:true}" }');
-
-      console.log(x);
-
-      mockData.arrayWithRange.length.should.be.within(1, 5);
-    });
+    // it('should allow for array ranges', function(){
+    //
+    //
+    //   var x = mocktopus.mock('{ "~length": "4", "~value": "#name{middle:true,prefix:true}" }');
+    //
+    //   console.log(x);
+    //
+    //   mockData.arrayWithRange.length.should.be.within(1, 5);
+    // });
   });
 });

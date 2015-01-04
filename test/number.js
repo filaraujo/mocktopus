@@ -18,25 +18,61 @@ describe('#mock:number', function() {
     });
   });
 
-  describe('when given an number range as a value', function() {
-    it('should return an number within that range', function() {
-      mockData.numberWithRange.should.be.within(1, 1000).and.a.Number;
+  describe('when given the "#integer" directive', function() {
+    it('should return a number', function() {
+      mockData.numberInteger.should.be.a.Number;
+      mockData.numberIntegerWithRange.should.be.a.Number;
+    });
+
+    describe('with a "min" and "max" params', function() {
+      it('should return an integer number within that range', function() {
+        mockData.numberIntegerWithRange.should.be.within(1001, 2000);
+      });
     });
   });
 
-  describe('when given an number range and a decimal as a value', function() {
-    it('should return an number within that range and precision', function() {
-      var data = mockData.numberWithRangeAndDecimal;
-      var decimals = data.toString().split('.')[1].length;
+  describe('when given the "#natural" directive', function() {
+    it('should return a natural number', function() {
+      mockData.numberNatural.should.a.Number;
+      mockData.numberNaturalWithRange.should.a.Number;
+      mockData.numberNatural.should.be.greaterThan(0);
+      mockData.numberNaturalWithRange.should.be.greaterThan(0);
+    });
 
-      data.should.be.within(1, 1000).and.a.Number;
-      decimals.should.be.exactly(4);
+    describe('with a "min" and "max" params', function() {
+      it('should return an natural number within that range', function() {
+        mockData.numberNaturalWithRange.should.be.within(1, 1000);
+      });
     });
   });
 
-  describe('when given an string with numbers and text', function() {
-    it('should return value as text', function() {
-      mockData.numbersWithLetters.should.be.eql('1000s').and.a.String;
+  describe('when given the "#floating" directive', function() {
+    it('should return a float number', function() {
+      [
+        mockData.numberFloating,
+        mockData.numberFloatingWithRange,
+        mockData.numberFloatingWithFixed
+      ]
+        .forEach(function(num) {
+          var decimal = num.toString().split('.')[1];
+
+          num.should.a.Number;
+          decimal.length.should.be.greaterThan(0);
+        });
+    });
+
+    describe('with a "min" and "max" params', function() {
+      it('should return an floating number within that range', function() {
+        mockData.numberFloatingWithRange.should.be.within(2000, 3000);
+      });
+    });
+
+    describe('with a "fixed" param', function() {
+      it('should return an floating number with that precision', function() {
+        var decimal = mockData.numberFloatingWithFixed.toString().split('.')[1];
+
+        decimal.length.should.exactly(6);
+      });
     });
   });
 });

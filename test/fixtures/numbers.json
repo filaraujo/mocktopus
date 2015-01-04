@@ -1,7 +1,12 @@
 {
   "numberSimple": "66",
   "numberWithDecimal": "723.12312313",
-  "numberWithRange": "1...1000",
-  "numberWithRangeAndDecimal": "1...1000:4",
-  "numbersWithLetters": "1000s"
+  "numbersWithLetters": "1000s",
+  "numberNatural": "#natural",
+  "numberNaturalWithRange": "#natural?min:1,max:1000",
+  "numberInteger": "#integer",
+  "numberIntegerWithRange": "#integer?min:1001,max:2000",
+  "numberFloating": "#floating",
+  "numberFloatingWithRange": "#floating?min:2001,max:3000",
+  "numberFloatingWithFixed": "#floating?fixed:6"
 }
