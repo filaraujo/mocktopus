@@ -10,7 +10,6 @@ function randomNumber(token) {
   var precision = tokens[2];
   var rand;
 
-
   if (!max) {
     return min;
   }
@@ -18,6 +17,7 @@ function randomNumber(token) {
   rand = (Math.random() * (max - min)) + min;
 
   if (precision) {
+    // toFixed does rounding, this prevents it
     precision = rand.toString().indexOf('.') + precision;
     return Number(rand.toPrecision(precision));
   }
@@ -29,21 +29,27 @@ function randomNumber(token) {
  *
  */
 function arrayify(tmpl) {
-  // var numbers = tmpl['#'].split('...').map(Number);
   // clone obj
   var obj = JSON.parse(JSON.stringify(tmpl));
-  delete obj['#'];
+  var array = Array.apply(null, {
+    length: randomNumber(obj['~length'])
+  });
 
-  var numbers = randomNumber(tmpl['#']);
+  delete obj['~length'];
 
-  return Array.apply(null, {length: numbers})
-    .map(parse.bind(this, obj));
+  console.log(obj, Object.keys(obj))
+
+  if (Object.keys(obj).length) {
+    return array.map(parse.bind(this, obj));
+  }
+
+  return array;
 }
 
 /**
  *
  */
-function parseToken(token){
+function parseToken(token) {
   var tokens;
 
   if (token.indexOf('...') >= 0) {
@@ -54,6 +60,8 @@ function parseToken(token){
     return Number(token);
   }
 
+  return token;
+
 }
 
 /**
@@ -62,8 +70,18 @@ function parseToken(token){
 function parse(tmpl) {
   var obj = {};
 
-  if (tmpl.hasOwnProperty('#')) {
+  if (typeof tmpl === undefined) {
+    return tmpl;
+  }
+
+  // if length directive, convert to array
+  if (tmpl.hasOwnProperty('~length')) {
     return arrayify(tmpl);
+  }
+
+  // if value directive, return value instead of an {}
+  if (tmpl.hasOwnProperty('~value')) {
+    return parseToken(tmpl['~value']);
   }
 
   Object.keys(tmpl).forEach(function(key) {
@@ -83,6 +101,7 @@ function parse(tmpl) {
 
   return obj;
 }
+
 
 api.mock = function(tmpl) {
   var template = tmpl;

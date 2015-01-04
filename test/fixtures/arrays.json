@@ -1,16 +1,38 @@
 {
-  "arraySingle": {
-    "#": "1",
+  "arrayEmpty": {
+    "~length": "0"
+  },
+
+  "arraySingleEmpty": {
+    "~length": "1"
+  },
+
+  "arrayManyEmpty": {
+    "~length": "10"
+  },
+
+  "arraySingleObject": {
+    "~length": "1",
     "property": true
   },
 
-  "arrayMultiple": {
-    "#": "3",
+  "arrayManyObjects": {
+    "~length": "3",
     "property": true
+  },
+
+  "arraySingleValue": {
+    "~length": "1",
+    "~value": "111"
+  },
+
+  "arrayManyValues": {
+    "~length": "4",
+    "~value": "444"
   },
 
   "arrayWithRange": {
-    "#": "1...5",
+    "~length": "1...5",
     "property": true
   }
 }
