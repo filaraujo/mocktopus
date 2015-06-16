@@ -38,15 +38,12 @@ function arrayify(tmpl) {
 
   delete obj['@length'];
 
-  // console.log(obj, Object.keys(obj))
-
   if (Object.keys(obj).length) {
     return array.map(parse.bind(this, obj));
   }
 
   return array;
 }
-
 
 function paramify(token) {
   'use strict';
@@ -84,15 +81,11 @@ function paramify(token) {
 function parseToken(token) {
   var tokens;
 
-  // console.log(token)
-
   if (/^\#/.test(token)) {
     tokens = token.split(/\?/);
-    console.log(tokens)
 
     var directive = tokens[0].split('#')[1];
     var params = paramify(tokens[1]);
-
 
     return chance[directive].call(chance, params);
   }
@@ -106,7 +99,6 @@ function parseToken(token) {
   }
 
   return token;
-
 }
 
 /**
@@ -131,7 +123,7 @@ function parse(tmpl) {
 
   Object.keys(tmpl).forEach(function(key) {
     var token = tmpl[key];
-    var newToken;
+    var newToken = token;
 
     if (typeof token === 'string') {
       newToken = parseToken(token);
@@ -141,12 +133,11 @@ function parse(tmpl) {
       newToken = parse(tmpl[key]);
     }
 
-    obj[key] = newToken || token;
+    obj[key] = newToken;
   });
 
   return obj;
 }
-
 
 api.mock = function(tmpl) {
   var template = tmpl;
@@ -166,11 +157,7 @@ api.mock = function(tmpl) {
     throw new Error('invalid template');
   }
 
-  // console.log(parse(template));
-
   return parse(template);
-
 };
-
 
 module.exports = api;

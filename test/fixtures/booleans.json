@@ -1,0 +1,6 @@
+{
+  "booleanTrue": true,
+  "booleanFalse": false,
+  "booleanDirective": "#bool",
+  "booleanDirectiveWithLikelihood": "#bool?likelihood:100"
+}

@@ -6,7 +6,7 @@ var template = fs.readFileSync('./test/fixtures/arrays.json', 'utf8');
 var mockData = mocktopus.mock(template);
 
 describe('#mock:arrays', function() {
-  describe('when given an "~length" directive', function() {
+  describe('when given an "@length" directive', function() {
 
     it('should create an array', function() {
       Object.keys(mockData).forEach(function(array) {
@@ -19,7 +19,7 @@ describe('#mock:arrays', function() {
       mockData.arrayManyEmpty.should.matchEach(undefined);
     });
 
-    it('should create an array based on the "~length" specified', function() {
+    it('should create an array based on the "@length" specified', function() {
       mockData.arrayEmpty.should.have.a.lengthOf(0);
       mockData.arraySingleEmpty.should.have.a.lengthOf(1);
       mockData.arrayManyEmpty.should.have.a.lengthOf(10);
@@ -29,7 +29,7 @@ describe('#mock:arrays', function() {
       mockData.arrayManyValues.should.have.a.lengthOf(4);
     });
 
-    it('should populate that array based on the "~value" specified', function() {
+    it('should populate that array based on the "@value" specified', function() {
       mockData.arraySingleValue.should.matchEach(111);
       mockData.arrayManyValues.should.matchEach(444);
     });
@@ -48,16 +48,5 @@ describe('#mock:arrays', function() {
     it('should allow for array ranges', function() {
       mockData.arrayWithRange.length.should.be.within(1, 5);
     });
-
-
-    // it('should allow for array ranges', function(){
-    //
-    //
-    //   var x = mocktopus.mock('{ "~length": "4", "~value": "#name{middle:true,prefix:true}" }');
-    //
-    //   console.log(x);
-    //
-    //   mockData.arrayWithRange.length.should.be.within(1, 5);
-    // });
   });
 });

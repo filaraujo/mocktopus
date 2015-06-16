@@ -1,0 +1,16 @@
+{
+  "stringSimple": "abc",
+  "stringParagraph": "#paragraph",
+  "stringParagraphWithSentences": "#paragraph?sentences:10",
+  "stringSentence": "#sentence",
+  "stringSentenceWithWords": "#sentence?words:8",
+  "stringSyllable": "#syllable",
+  "stringWord": "#word",
+  "stringCharacter": "#character",
+  "stringCharacterWithPool": "#character?pool:abcd",
+  "stringCharacterWithAlpha": "#character?alpha:true",
+  "stringCharacterWithoutAlpha": "#character?alpha:false",
+  "stringCharacterWithLowerCasing": "#character?casing:lower",
+  "stringCharacterWithUpperCasing": "#character?casing:upper",
+  "stringCharacterWithSymbols": "#character?symbols:true"
+}

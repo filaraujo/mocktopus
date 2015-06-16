@@ -70,7 +70,6 @@ describe('#mock:number', function() {
     describe('with a "fixed" param', function() {
       it('should return an floating number with that precision', function() {
         var decimal = mockData.numberFloatingWithFixed.toString().split('.')[1];
-
         decimal.length.should.exactly(6);
       });
     });
