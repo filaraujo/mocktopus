@@ -8,16 +8,16 @@
   },
 
   "arrayManyEmpty": {
-    "@length": "10"
+    "@length": 10
   },
 
   "arraySingleObject": {
-    "@length": "1",
+    "@length": 1,
     "someProperty": true
   },
 
   "arrayManyObjects": {
-    "@length": "3",
+    "@length": 3,
     "someProperty": true
   },
 

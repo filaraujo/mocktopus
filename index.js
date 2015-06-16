@@ -4,6 +4,7 @@ var api = {};
  *
  */
 function randomNumber(token) {
+
   var tokens = token.split(/\.{3}|\:/).map(Number);
   var min = tokens[0];
   var max = tokens[1];
@@ -31,8 +32,14 @@ function randomNumber(token) {
 function arrayify(tmpl) {
   // clone obj
   var obj = JSON.parse(JSON.stringify(tmpl));
+  var arrayLength = obj['@length'];
+
+  if (typeof obj['@length'] === 'string') {
+    arrayLength = randomNumber(obj['@length']);
+  }
+
   var array = Array.apply(null, {
-    length: randomNumber(obj['@length'])
+    length: arrayLength
   });
 
   delete obj['@length'];
