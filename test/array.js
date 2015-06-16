@@ -48,5 +48,14 @@ describe('#mock:arrays', function() {
     it('should allow for array ranges', function() {
       mockData.arrayWithRange.length.should.be.within(1, 5);
     });
+
+    it('should allow for nested array ', function() {
+      mockData.arrayWithNestArray.length.should.be.within(1, 5);
+      mockData.arrayWithNestArray.should.matchEach(function(array) {
+        array.foo.length.should.be.within(1, 3);
+        array.foo[0].bar.should.be.ok;
+        return true;
+      });
+    });
   });
 });
