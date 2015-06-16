@@ -32,8 +32,10 @@ describe('#mock:arrays', function() {
     it('should populate that array based on the "@value" specified', function() {
       mockData.arraySingleValue.should.matchEach(111);
       mockData.arrayManyValues.should.matchEach(444);
+      mockData.arrayManyRandomValues.should.matchEach(function(number) {
+        return number <= 1000;
+      });
     });
-
 
     it('should include any properties within the object', function() {
       mockData.arraySingleObject.forEach(function(array) {

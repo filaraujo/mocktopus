@@ -31,6 +31,11 @@
     "@value": "444"
   },
 
+  "arrayManyRandomValues": {
+    "@length": "4",
+    "@value": "#natural?min:1,max:1000"
+  },
+
   "arrayWithRange": {
     "@length": "1...5"
   },
