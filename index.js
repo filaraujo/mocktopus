@@ -1,6 +1,5 @@
 var chance = require('chance').Chance(Math.random);
 var api = {};
-
 /**
  *
  */
@@ -160,4 +159,5 @@ api.mock = function(tmpl) {
   return parse(template);
 };
 
+(global || window).mocktopus = api;
 module.exports = api;
