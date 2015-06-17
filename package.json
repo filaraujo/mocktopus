@@ -5,19 +5,23 @@
   "author": "Filipe Araujo <filipe.alves.araujo@gmail.com>",
   "main": "index.js",
   "scripts": {
-    "start": "webpack index.js mocktopus.js -p",
+    "start": "webpack index.js mocktopus.min.js -p",
     "test": "mocha test"
   },
   "license": "ISC",
   "dependencies": {
-    "mocha": "^2.1.0"
+    "chance": "^0.7.5"
   },
   "devDependencies": {
-    "chance": "^0.7.5",
-    "gulp": "^3.9.0",
-    "gulp-browserify": "^0.5.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^1.2.0",
-    "should": "^4.4.2"
-  }
+    "mocha": "^2.1.0",
+    "node-libs-browser": "^0.5.2",
+    "should": "^4.4.2",
+    "webpack": "^1.9.11"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js",
+    "test/"
+  ]
 }
