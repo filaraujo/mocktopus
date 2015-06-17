@@ -1,0 +1,22 @@
+{
+  "chooseSimple": {
+    "@choose": [
+      true,
+      false
+    ]
+  },
+  "chooseNumber": {
+    "@choose": [
+      1,
+      2,
+      3
+    ]
+  },
+  "chooseObject": {
+    "@choose": [
+      { "foo": true },
+      { "bar": true },
+      { "baz": true }
+    ]
+  }
+}

@@ -81,6 +81,11 @@ function paramify(token) {
   return params;
 }
 
+function choosify(token) {
+  var index = Math.floor(Math.random() * token.length);
+  return token[index];
+}
+
 /**
  *
  */
@@ -120,6 +125,11 @@ function parse(tmpl) {
   // if length directive, convert to array
   if (tmpl.hasOwnProperty('@length')) {
     return arrayify(tmpl);
+  }
+
+  // if choose directive, choose and item
+  if (tmpl.hasOwnProperty('@choose')) {
+    return choosify(tmpl['@choose']);
   }
 
   // if value directive, return value instead of an {}
