@@ -1,0 +1,16 @@
+{
+  "name": "mocktopus",
+  "main": "index.js",
+  "version": "0.0.3",
+  "homepage": "https://github.com/filaraujo/mocktopus",
+  "authors": [
+    "Filipe Araujo <filipe.alves.araujo@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ]
+}
