@@ -27,5 +27,12 @@ describe('#mock:choose', function() {
           .and.should.be.ok;
       });
     });
+
+    describe('with objects with directives', function() {
+      it('should return converted objects ', function() {
+        mockData.chooseObjectWithDirectives.should.have.property('number');
+        mockData.chooseObjectWithDirectives.number.should.be.a.Number;
+      });
+    });
   });
 });

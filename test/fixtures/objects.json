@@ -14,5 +14,12 @@
         "faz": 1
       }
     }
+  },
+  "objectNestedDirective": {
+    "foo": {
+      "bar": {
+        "baz": "#word"
+      }
+    }
   }
 }

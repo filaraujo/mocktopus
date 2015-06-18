@@ -18,5 +18,11 @@
       { "bar": true },
       { "baz": true }
     ]
+  },
+  "chooseObjectWithDirectives": {
+    "@choose": [
+      { "number": "#natural" },
+      { "number": "#natural" }
+    ]
   }
 }

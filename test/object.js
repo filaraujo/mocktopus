@@ -51,4 +51,16 @@ describe('#mock:object', function() {
     });
 
   });
+
+  describe('when given nested directives', function() {
+    var data = mockData.objectNestedDirective;
+
+    it('should return converted objects', function() {
+      data.should.be.an.Object;
+      data.should.have.propertyByPath('foo', 'bar', 'baz');
+      data.foo.bar.baz.should.be.String;
+      data.foo.bar.baz.should.not.be.eql('#word');
+    });
+
+  });
 });

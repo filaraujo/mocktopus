@@ -83,7 +83,7 @@ function paramify(token) {
 
 function choosify(token) {
   var index = Math.floor(Math.random() * token.length);
-  return token[index];
+  return parse(token[index]);
 }
 
 /**
@@ -117,6 +117,10 @@ function parseToken(token) {
  */
 function parse(tmpl) {
   var obj = {};
+
+  if (typeof tmpl !== 'object') {
+    return tmpl;
+  }
 
   if (typeof tmpl === undefined) {
     return tmpl;
