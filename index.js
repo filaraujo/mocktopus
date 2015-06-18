@@ -8,7 +8,7 @@ function randomNumber(token) {
   var tokens = token.split(/\.{3}|\:/).map(Number);
   var min = tokens[0];
   var max = tokens[1];
-  var precision = tokens[2];
+  // var precision = tokens[2];
   var rand;
 
   if (!max) {
@@ -17,11 +17,11 @@ function randomNumber(token) {
 
   rand = (Math.random() * (max - min)) + min;
 
-  if (precision) {
-    // toFixed does rounding, this prevents it
-    precision = rand.toString().indexOf('.') + precision;
-    return Number(rand.toPrecision(precision));
-  }
+  // if (precision) {
+  //   // toFixed does rounding, this prevents it
+  //   precision = rand.toString().indexOf('.') + precision;
+  //   return Number(rand.toPrecision(precision));
+  // }
 
   return Math.round(rand);
 }
