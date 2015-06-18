@@ -1,0 +1,4 @@
+{
+  "functionAlert": "#function?type:alert",
+  "functionConsole": "#function?type:console"
+}

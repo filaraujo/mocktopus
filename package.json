@@ -16,6 +16,7 @@
     "mocha": "^2.1.0",
     "node-libs-browser": "^0.5.2",
     "should": "^4.4.2",
+    "sinon": "^1.15.3",
     "webpack": "^1.9.11"
   },
   "files": [
