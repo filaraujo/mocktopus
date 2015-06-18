@@ -11,6 +11,8 @@ describe('#mock:text', function() {
       mockData.stringSimple.should.be.instanceof(String)
         .and.a.String
         .and.eql('abc');
+      mockData.stringMixed.should.be.String
+        .and.eql('16002446fffd0005da.2.0');
     });
   });
 
