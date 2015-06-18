@@ -1,11 +1,11 @@
 {
   "name": "mocktopus",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "author": "Filipe Araujo <filipe.alves.araujo@gmail.com>",
   "main": "index.js",
   "scripts": {
-    "start": "webpack index.js mocktopus.min.js -p",
+    "build": "webpack index.js mocktopus.min.js -p",
     "test": "mocha test"
   },
   "license": "ISC",
