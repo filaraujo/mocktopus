@@ -6,6 +6,22 @@ var template = fs.readFileSync('./test/fixtures/arrays.json', 'utf8');
 var mockData = mocktopus.mock(template);
 
 describe('#mock:arrays', function() {
+
+  describe('when given an empty array', function() {
+    it('should return an empty array', function() {
+      mockData.arrayEmptyNoDirective.should.be.an.Array;
+      mockData.arrayEmptyNoDirective.length.should.be.eql(0);
+    });
+  });
+
+  describe('when given an set array length', function() {
+    it('should return a that many mocked items', function() {
+      mockData.arrayWithSetItems.should.be.an.Array;
+      mockData.arrayWithSetItems.length.should.be.eql(2);
+      mockData.arrayWithSetItems[0].foo.should.be.a.Number;
+    });
+  });
+
   describe('when given an "@length" directive', function() {
 
     it('should create an array', function() {

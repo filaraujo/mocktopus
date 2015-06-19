@@ -15,7 +15,6 @@ describe('#mock:boolean', function() {
 
   describe('when given an "#boolean" directive', function() {
     it('should return a boolean', function() {
-      console.log('bool', mockData.booleanDirective);
       mockData.booleanDirective.should.be.a.Boolean;
     });
 
