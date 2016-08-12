@@ -1,0 +1,7 @@
+sudo: false
+language: node_js
+node_js:
+  - '6.0.0'
+install:
+  - npm install
+after_success: npm test
