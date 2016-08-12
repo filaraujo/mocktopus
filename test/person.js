@@ -8,14 +8,14 @@ var mockData = mocktopus.mock(template);
 describe('#mock:person', function() {
   describe('when given the "#age" directive', function() {
     it('should return a age', function() {
-      mockData.personAge.should.a.Number;
+      mockData.personAge.should.be.a.Number;
     });
 
     describe('with a "type" params', function() {
       it('should return an typed age', function() {
-        mockData.personAgeChild.should.a.Number
+        mockData.personAgeChild.should.be.a.Number
           .and.within(0, 12);
-        mockData.personAgeTeen.should.a.Number
+        mockData.personAgeTeen.should.be.a.Number
           .and.within(13, 19);
       });
     });
@@ -23,19 +23,19 @@ describe('#mock:person', function() {
 
   describe('when given the "#birthday" directive', function() {
     it('should return a birthday', function() {
-      mockData.personBirthday.should.a.Date;
+      mockData.personBirthday.should.be.instanceOf(Date);
     });
 
     describe('with a "string" params set to true', function() {
       it('should return a stringed date', function() {
-        mockData.personBirthdayString.should.a.String
+        mockData.personBirthdayString.should.be.a.String
           .and.match(/\d+\/\d+\/\d+/);
       });
     });
 
     describe('with a "year" params', function() {
       it('should return a date set to that year', function() {
-        mockData.personBirthdayWithYear.should.a.Date;
+        mockData.personBirthdayWithYear.should.be.instanceOf(Date);
         mockData.personBirthdayWithYear.getFullYear().should.be.exactly(1983);
       });
     });

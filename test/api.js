@@ -21,8 +21,6 @@ describe('mocktopus', function() {
     });
 
     it('should not accept anything other than an valid object or json string', function() {
-
-      var invalidTypes = [false, true, {}, '', 1, null, undefined];
       var invalidTypes = [false, true, '', 1, null, undefined];
 
       invalidTypes.forEach(function(type) {
