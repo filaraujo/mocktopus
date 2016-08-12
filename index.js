@@ -6,15 +6,18 @@ var api = {};
 api.mock = function(tmpl) {
   var template = tmpl;
 
-  // if not a string, stringify it
-  if (typeof tmpl !== 'string') {
+  // if not a string or object, stringify it
+  if (typeof tmpl !== 'string' && tmpl !== 'Object') {
     template = JSON.stringify(tmpl);
   }
 
-  try {
-    // convert to object
-    template = JSON.parse(template);
-  } catch (e) {}
+  // if a string, parse it.
+ if (typeof template === 'string') {
+    try {
+      // convert to object
+      template = JSON.parse(template);
+    } catch (e) {}
+  }
 
   // if is not an object when parsed, throw error
   if (!Object.keys(template)) {
