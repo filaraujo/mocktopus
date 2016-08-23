@@ -23,6 +23,6 @@
     "LICENSE",
     "README.md",
     "index.js",
-    "test/"
+    "lib/"
   ]
 }
