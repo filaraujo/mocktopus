@@ -1,6 +1,6 @@
 {
   "name": "mocktopus",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "",
   "author": "Filipe Araujo <filipe.alves.araujo@gmail.com>",
   "main": "index.js",
